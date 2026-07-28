@@ -1,7 +1,7 @@
 #!/bin/bash
 set -euxo pipefail
 
-dockerimage="debian:11-slim"
+dockerimage="ubuntu:22.04"
 
 
 # we do this so that we can be agnostic about where we're invoked from

@@ -1,5 +1,5 @@
 param(
-    [string]$ImageTag = "accelerator-linux-builder:bullseye"
+    [string]$ImageTag = "accelerator-linux-builder:jammy"
 )
 
 $ErrorActionPreference = "Stop"

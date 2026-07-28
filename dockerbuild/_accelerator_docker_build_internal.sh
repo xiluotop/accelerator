@@ -35,7 +35,7 @@ bootstrapPkgs()
         clang                           \
         make                            \
         python3-httplib2 python3-pip    \
-        lib32stdc++-10-dev lib32z1-dev libc6-dev-i386 linux-libc-dev:i386 \
+        lib32stdc++-11-dev lib32z1-dev libc6-dev-i386 linux-libc-dev:i386 \
         libzstd-dev libzstd-dev:i386 zlib1g-dev zlib1g-dev:i386
 
         # force clang to be our compiler no matter what, hopefully

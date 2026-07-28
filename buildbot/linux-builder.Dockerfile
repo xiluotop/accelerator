@@ -1,4 +1,4 @@
-FROM debian:11-slim
+FROM ubuntu:22.04
 
 RUN dpkg --add-architecture i386 \
     && apt-get -o Acquire::Retries=5 update -y \
@@ -15,7 +15,7 @@ RUN dpkg --add-architecture i386 \
         python3 \
         python3-pip \
         procps \
-        lib32stdc++-10-dev \
+        lib32stdc++-11-dev \
         lib32z1-dev \
         libc6-dev-i386 \
         linux-libc-dev:i386 \

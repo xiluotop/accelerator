@@ -10,7 +10,7 @@ on:
 jobs:
   cache:
     name: Create cache
-    runs-on: 'ubuntu-latest'
+    runs-on: 'ubuntu-22.04'
     outputs:
       key: ${{ steps.cache-key.outputs.key }}
 

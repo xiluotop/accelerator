@@ -300,7 +300,7 @@ powershell -ExecutionPolicy Bypass -File buildbot/build_linux_accelerator.ps1 -S
 
 This flow:
 
-- runs entirely inside the Docker image `accelerator-linux-builder:bullseye`
+- runs entirely inside the Ubuntu 22.04 Docker image `accelerator-linux-builder:jammy`
 - stages the Linux build in a separate working directory
 - keeps Linux build products out of the main repository tree
 
@@ -311,7 +311,7 @@ powershell -ExecutionPolicy Bypass -File buildbot/build_linux_carburetor.ps1 -Ca
 powershell -ExecutionPolicy Bypass -File buildbot/build_linux_carburetor.ps1 -CarburetorRoot /path/to/carburetor -Arch x64 -BuildDir build-linux-carburetor-x64
 ```
 
-The helper scripts use the local Docker image `accelerator-linux-builder:bullseye` so the Linux toolchain is installed once at image-build time, not on every build run.
+The helper scripts use the local Ubuntu 22.04 Docker image `accelerator-linux-builder:jammy` so the Linux toolchain is installed once at image-build time, not on every build run.
 
 Optional staging override for the containerized helper flow:
 

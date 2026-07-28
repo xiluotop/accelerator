@@ -5,7 +5,7 @@ param(
     [string]$Arch = "x64",
 
     [string]$BuildDir = "",
-    [string]$DockerImage = "accelerator-linux-builder:bullseye",
+    [string]$DockerImage = "accelerator-linux-builder:jammy",
     [string]$StageRoot = (Join-Path (Split-Path -Parent $PSScriptRoot) "..\accelerator-linux-stage")
 )
 
