@@ -15,7 +15,8 @@ jobs:
       key: ${{ steps.cache-key.outputs.key }}
 
     env:
-      SOURCEMOD_REF: 'e0e018c5ebcd11df9bab91b43d40bf148805c684'
+      # SourceMod 1.13 baseline that introduced extension API 9.
+      SOURCEMOD_REF: '5acd8c77c99da0b0c381fb8b3449ad9e0521752e'
       AMBUILD_REF: '2d4620da4cdaf89cf25afc3577f920e6138ae7cd'
     steps:
       - uses: actions/checkout@v4

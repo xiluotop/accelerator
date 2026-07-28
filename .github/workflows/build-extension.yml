@@ -50,6 +50,17 @@ jobs:
           key: ${{ inputs.cache-key }}
           fail-on-cache-miss: true
           enableCrossOsArchive: true
+
+      - name: Verify SourceMod extension API
+        if: startsWith(runner.os, 'Linux')
+        shell: bash
+        run: |
+          api_version=$(awk '/^[[:space:]]*#define[[:space:]]+SMINTERFACE_EXTENSIONAPI_VERSION[[:space:]]+[0-9]+/ { print $3; exit }' \
+            "${SOURCEMOD}/public/IExtensionSys.h")
+          if test "${api_version}" != "9"; then
+            echo "SourceMod extension API 9 is required, found: ${api_version:-unknown}"
+            exit 1
+          fi
       
       - name: Linux dependencies
         if: startsWith(runner.os, 'Linux')
