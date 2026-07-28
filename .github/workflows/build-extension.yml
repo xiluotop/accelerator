@@ -55,7 +55,7 @@ jobs:
         if: startsWith(runner.os, 'Linux')
         shell: bash
         run: |
-          api_version=$(awk '/^[[:space:]]*#define[[:space:]]+SMINTERFACE_EXTENSIONAPI_VERSION[[:space:]]+[0-9]+/ { print $3; exit }' \
+          api_version=$(awk '/^[[:space:]]*#define[[:space:]]+SMINTERFACE_EXTENSIONAPI_VERSION[[:space:]]+[0-9]+/ { print ($3 + 0); exit }' \
             "${SOURCEMOD}/public/IExtensionSys.h")
           if test "${api_version}" != "9"; then
             echo "SourceMod extension API 9 is required, found: ${api_version:-unknown}"
