@@ -135,6 +135,9 @@ class AcceleratorConfig(object):
   
   def configure_linux(self, cxx):
     cxx.defines += ['_LINUX', 'POSIX', '_GLIBCXX_USE_CXX11_ABI=0']
+    # Source-engine games often load their own outdated libstdc++.so.6 before
+    # system libraries. Keep the extension independent of that runtime.
+    cxx.postlink += ['-static-libstdc++', '-static-libgcc']
     return
   
   def configure_windows(self, cxx):

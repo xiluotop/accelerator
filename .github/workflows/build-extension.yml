@@ -94,6 +94,24 @@ jobs:
           python ../configure.py --enable-optimize
           ambuild
 
+      - name: Verify Linux runtime compatibility
+        if: startsWith(runner.os, 'Linux')
+        shell: bash
+        run: |
+          mapfile -d '' extensions < <(find build/package -name 'accelerator.ext.so' -print0)
+          if test ${#extensions[@]} -eq 0; then
+            echo "No Linux extension binaries were produced."
+            exit 1
+          fi
+
+          for extension in "${extensions[@]}"; do
+            echo "Checking ${extension}"
+            if readelf -d "${extension}" | grep -q 'Shared library: \[libstdc++\.so\.6\]'; then
+              echo "${extension} still dynamically depends on libstdc++.so.6"
+              exit 1
+            fi
+          done
+
       - name: Upload package
         if: ${{ inputs.upload }}
         uses: actions/upload-artifact@v4
